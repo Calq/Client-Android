@@ -6,7 +6,16 @@ The full quick start and reference docs can be found at: https://www.calq.io/doc
 Installation
 ------------
 
-Grab the [latest release](https://github.com/Calq/Client-CSharp-Web/releases) and include it in your project. Detailed instructions for Eclipse are available in the [Quick Start Guide](https://www.calq.io/docs/client/android).
+For Android Studio simple add Calq as a gradle dependency in `build.gradle`
+
+```
+dependencies {
+	/* ... */ 
+    compile 'io.calq:library:1.1.0'
+}
+```
+
+Detailed instructions for Android Studio and alternative instructions for Eclipse are available in the [Quick Start Guide](https://www.calq.io/docs/client/android).
 
 Your app must have the `INTERNET` permission. This is needed so the Calq client can send analytics data back to our servers.
 
