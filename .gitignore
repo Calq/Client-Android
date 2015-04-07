@@ -2,7 +2,6 @@
 bin
 gen
 .gradle
-.idea
 gradle
 build
 local.properties
