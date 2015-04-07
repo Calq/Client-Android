@@ -1,0 +1,44 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 19
+    buildToolsVersion "21.1.2"
+
+    defaultConfig {
+        minSdkVersion 8
+        targetSdkVersion 19
+        versionName project.VERSION_NAME    /* From gradle.properties */
+        versionCode Integer.parseInt(project.VERSION_CODE)  /* From gradle.properties */
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+    }
+
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
+}
+
+/* For unit testing */
+dependencies {
+    testCompile 'junit:junit:4.12'
+    testCompile 'org.robolectric:robolectric:2.4'
+}
+
+/* Add Robolectric Gradle plugin */
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'org.robolectric:robolectric-gradle-plugin:1.0.1'
+    }
+}
+apply plugin: 'org.robolectric'
+
+/* For Maven upload */
+apply from: '../maven_push.gradle'
