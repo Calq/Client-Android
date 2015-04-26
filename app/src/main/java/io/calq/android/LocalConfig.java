@@ -49,11 +49,7 @@ public class LocalConfig {
 	 * @param context		The context used to fetch configuration items.
 	 */
 	public LocalConfig(Context context) {
-        Bundle configBundles = new Bundle();
-        readConfig(configBundles);
-        return;
-
-	/*	Context appContext = context.getApplicationContext();
+		Context appContext = context.getApplicationContext();
 		String packageName = appContext.getPackageName();
         try {
             ApplicationInfo appInfo = appContext.getPackageManager().getApplicationInfo(packageName, PackageManager.GET_META_DATA);
@@ -64,7 +60,7 @@ public class LocalConfig {
             readConfig(configBundle);
         } catch (final NameNotFoundException e) {
             throw new RuntimeException("Unable to parse Calq configuration using package name = " + packageName, e);
-        }*/
+        }
 	}
 	
 	/**
