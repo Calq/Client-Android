@@ -77,7 +77,7 @@ public class ApiDispatcherTest {
 
         Robolectric.getFakeHttpLayer().addHttpResponseRule(
                 dispatcher.getEndpointUrl(testBatch.get(0)),
-                new TestHttpResponse(500, "{\"status\":\"rejected\", \"error\":\"Test error\"}"));
+                new TestHttpResponse(400, "{\"status\":\"rejected\", \"error\":\"Test error\"}"));
 
         dispatcher.dispatch(testBatch); // Should throw
     }
