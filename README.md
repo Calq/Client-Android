@@ -6,12 +6,12 @@ The full quick start and reference docs can be found at: https://www.calq.io/doc
 Installation
 ------------
 
-For Android Studio simple add Calq as a gradle dependency in `build.gradle`
+For Android Studio simply add Calq as a gradle dependency in `build.gradle`
 
 ```
 dependencies {
 	/* ... */ 
-    compile 'io.calq:library:1.1.0'
+    compile 'io.calq:library:1.1.1'
 }
 ```
 
