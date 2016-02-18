@@ -94,7 +94,6 @@ public class ApiDispatcher {
 					}
 			    }
 	        }
-			
 		} catch (ClientProtocolException e) {
 			// Failed, but don't know why. Signal failed for re-queue
     		return false;
@@ -116,7 +115,7 @@ public class ApiDispatcher {
     private StringEntity buildPayload(Vector<QueuedApiCall> batch) throws UnsupportedEncodingException {
         // Single item?
         if(batch.size() == 1) {
-            return new StringEntity(batch.firstElement().getPayload());
+            return new StringEntity(batch.firstElement().getPayload(), "UTF-8");
         } else {
             StringBuilder payload = new StringBuilder();
             payload.append("[");
@@ -128,10 +127,10 @@ public class ApiDispatcher {
                 payload.append(apiCall.getPayload());
             }
             payload.append("]");
-            return new StringEntity(payload.toString());
+            return new StringEntity(payload.toString(), "UTF-8");
         }
     }
-	
+
 	/**
 	 * Gets the endpoint URL to use for the given API call.
 	 */
