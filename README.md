@@ -11,7 +11,7 @@ For Android Studio simply add Calq as a gradle dependency in `build.gradle`
 ```
 dependencies {
 	/* ... */ 
-    compile 'io.calq:library:1.1.1'
+    compile 'io.calq:library:1.1.+'
 }
 ```
 
