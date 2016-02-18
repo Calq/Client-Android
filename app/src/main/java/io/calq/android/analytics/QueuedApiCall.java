@@ -15,6 +15,15 @@
 
 package io.calq.android.analytics;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+import java.util.TimeZone;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+
 /**
  * This is a special type of API call used for persisting calls to storage. At this
  * point we no longer care what kind of call it is. We just care about the endpoint
@@ -66,7 +75,22 @@ public class QueuedApiCall extends AbstractAnalyticsApiCall {
 	 */
 	@Override
 	public String getPayload() {
-		return payload;
+        // This was stored and now is going to be sent. Need to get the time stamp for now
+        try {
+            JSONObject json = new JSONObject(payload);
+
+            // Get date formatted as UTC
+            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSSZ", Locale.US);
+            df.setTimeZone(TimeZone.getTimeZone("UTC"));
+            String utcTime = df.format(new Date());
+
+            // Inject time into payload
+            json.put(ReservedApiProperties.UTC_NOW, utcTime);
+            return json.toString();
+        } catch(JSONException e) {
+            // This shouldn't be happening. Just fall back and pass on to API server as is
+            return payload;
+        }
 	}
 	
 	/**

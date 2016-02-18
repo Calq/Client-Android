@@ -86,8 +86,8 @@ public class ActionApiCall extends AbstractAnalyticsApiCall {
 		try {
 			// Get date formatted as UTC
 			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSSZ", Locale.US);
-			df.setTimeZone(TimeZone.getTimeZone("gmt"));
-			String gmtTime = df.format(createdAt);
+			df.setTimeZone(TimeZone.getTimeZone("UTC"));
+			String utcTime = df.format(createdAt);
 			
 			// Build properties into object
 			JSONObject jsonPropeties = new JSONObject();
@@ -95,7 +95,7 @@ public class ActionApiCall extends AbstractAnalyticsApiCall {
 				jsonPropeties.put(entry.getKey(), entry.getValue());
 			}
 			
-			jsonObject.put(ReservedApiProperties.TIMESTAMP, gmtTime);
+			jsonObject.put(ReservedApiProperties.TIMESTAMP, utcTime);
 			jsonObject.put(ReservedApiProperties.ACTION_NAME, action);
 			jsonObject.put(ReservedApiProperties.USER_PROPERTIES, jsonPropeties);
 		} catch (JSONException e) {

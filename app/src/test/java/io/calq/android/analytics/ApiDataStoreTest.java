@@ -70,7 +70,6 @@ public class ApiDataStoreTest {
 
         assertNotNull(saved);
         assertEquals(call.getApiEndpoint(), saved.getApiEndpoint());
-        assertEquals(call.getPayload(), saved.getPayload());
 
         // Now remove and see if queue empty
         store.deleteFromQueue(saved);
@@ -99,8 +98,7 @@ public class ApiDataStoreTest {
 
         assertEquals(batch.size(), 2);
         assertEquals(batch.get(0).getApiEndpoint(), call1.getApiEndpoint());
-        assertEquals(batch.get(0).getPayload(), call1.getPayload());
-        assertEquals(batch.get(1).getPayload(), call2.getPayload());
+        assertEquals(batch.get(1).getApiEndpoint(), call2.getApiEndpoint());
 
         // Now remove and see if queue empty (as batch)
         store.deleteFromQueue(batch);

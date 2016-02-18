@@ -53,6 +53,11 @@ public class ReservedApiProperties {
     public static final String TIMESTAMP = "timestamp";
 
     /**
+     * Timestamp for the local device's time in UTC (in case the device is out by lots compared to real)
+     */
+    public static final String UTC_NOW = "utc_now";
+
+    /**
      * The unique key to identify this project when writing.
      */
     public static final String WRITE_KEY = "write_key";
